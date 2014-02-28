@@ -1,0 +1,34 @@
+.b-pager__list {
+    list-style-type: none;
+}
+
+.b-pager__list li {
+    display: block;
+    margin: 0 1em 0.5em 1em;
+    float: left;
+}
+
+.b-pager__list_forward {
+    float: left;
+}
+
+.b-pager__list_backward {
+    float: right;
+}
+
+.b-clear {
+    clear: both;
+}
+
+.b-photos {
+    width: 100%;
+}
+
+.b-tags__excluded {
+    color: red;
+}
+
+.b-tag {
+    margin: 0.5em 1em 0 1em;
+    float: left;
+}

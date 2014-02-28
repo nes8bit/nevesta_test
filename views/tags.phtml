@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    $(function() {
+        var tags = TESTCASE.tags;
+        tags.init(
+            $('.b-tags__select'),
+            $('.b-tags__selected'),
+            $('.b-tags__excluded')
+        )
+    });
+</script>
+<div class="b-sort">
+    <h4>Сортировка</h4>
+    <select name="order">
+        <option value="popular">По популярности</option>
+        <option value="created">По дате добавления</option>
+    </select>
+</div>
+<div class="b-tags">
+    <h4>Тэги</h4>
+    <span class="b-tags__selected clearfix">
+        <?php if (!empty($this->addTags)): ?>
+            <?php foreach ($this->addTags as $tag): ?>
+            <div class="b-tag b-tag__add">
+                <p><?= $tag->getTitle(); ?></p>
+                <input type="hidden" name="add_tags[]" value="<?= $tag->getId() ?>">
+                <a href="#" class="b-tag__remove">X</a>
+            </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </span>
+    <span class="b-tags__excluded clearfix">
+        <?php if (!empty($this->excludeTags)): ?>
+            <?php foreach ($this->excludeTags as $tag): ?>
+            <div class="b-tag b-tag__exclude">
+                <p><?= $tag->getTitle(); ?></p>
+                <input type="hidden" name="exclude_tags[]" value="<?= $tag->getId() ?>">
+                <a href="#" class="b-tag__remove">X</a>
+            </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </span>
+    <select class="b-tags__select">
+        <?php foreach ($this->tags as $tag): ?>
+            <option value="<?= $tag->getId() ?>"><?= $tag->getTitle() ?></option>
+        <?php endforeach; ?>
+    </select>
+    <a href="#" class="b-tags__add">Добавить тэг</a>
+    <a href="#" class="b-tags__exclude">Исключить тэг</a>
+</div>

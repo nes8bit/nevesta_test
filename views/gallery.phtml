@@ -1,0 +1,29 @@
+<?= $this->partial('views/user.phtml'); ?>
+<div class="b-gallery">
+    <h1><?= $this->title ?></h1>
+    <?php foreach ($this->flashes('info') as $msg): ?>
+        <i style="color: red"><?= $msg ?></i>
+    <?php endforeach; ?>
+    <form class="b-gallery__form">
+    <div class="b-pager clearfix">
+    <p class="b-pager__total">Страница 
+        <input type="text" name="page" value="<?= $this->currentPage ?>"> из <span class="b-total"><?= $this->pages ?></span></p>
+    </div>
+    <?= $this->partial('views/tags.phtml'); ?>
+    <input type="submit" value="Обновить">
+    </form>
+
+    <div class="b-gallery__content clearfix">
+        <div class="b-photos">
+            <?php foreach ($this->photos as $photo): ?>
+            <div "b-photo">
+               <img class="b-photo__img" src="<?= $photo->getSrc() ?>" />
+               <span class="b-photo__like-count"><?= $photo->likeCount ?></span>
+               <a href="/like/add/<?= $photo->id ?>" class="b-photo__like">Like</a>
+               <a href="/like/remove/<?= $photo->id ?>" class="b-photo__dislike">Dislike</a>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+

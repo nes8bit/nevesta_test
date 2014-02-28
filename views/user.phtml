@@ -1,0 +1,11 @@
+<form action="/user" method="post">
+<?php if ($this->user !== null): ?>
+    <p>You logged in as user: <?= $this->user->name ?></p>
+<?php else: ?>
+    <p>Not logged in</p>
+<?php endif ?>
+
+<label for="user_id">UserID:</label>
+<input name="user_id" type="text">
+<input type="submit" value="Set">
+</form>
