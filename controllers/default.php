@@ -54,13 +54,11 @@ $this->respond('GET', '/?', function ($request, $response, $service, $app) {
             $qb->orderBy('p.createdAt', 'DESC');
             break;
     }
-    //var_dump($qb->getDql());
 
     //Pagination
     $qb->setFirstResult(($currentPage - 1) * $itemsPerPage);
     $qb->setMaxResults($itemsPerPage);
     $query = $qb->getQuery();
-    //var_dump($query->getSql());
 
     $paginator = new Paginator($query, $fetchJoinCollection = false);
     $pages = ceil(count($paginator) / $itemsPerPage);
